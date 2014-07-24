@@ -1,0 +1,25 @@
+{
+  "name": "vorwahlen",
+  "version": "0.0.1",
+  "description": "segment german or international phone numbers to display them in a human readable format",
+  "main": "index.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "hashtree": "^0.4.1",
+    "lodash": "^2.4.1",
+    "mocha": "^1.21.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "vorwahlen",
+    "phone",
+    "numbers",
+    "german",
+    "international"
+  ],
+  "author": "commenthol",
+  "license": "MIT"
+}
