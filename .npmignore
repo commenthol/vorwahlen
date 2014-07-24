@@ -1,0 +1,5 @@
+.gitignore
+.npmignore
+attic/
+assets/
+build/
