@@ -53,11 +53,10 @@ function _buildHash (numbers) {
       key = (n||'').split('');
     tree.set(key, '#');
     check = tree.get(key);
+    
     if (!check) {
-      //~ console.log('#bad', key);
       while (key.length>1) {
         keyN.unshift(key.pop());
-        //~ console.log(key, keyN, tree.get(key));
         if (tree.get(key)) {
           keyN.unshift(key.pop());
           key.push(keyN.join(''));
@@ -95,7 +94,12 @@ function _buildRegex (tree) {
     }
     arr = arr.sort(function(a, b) {
       // sort by length in descending for numbers like `212` `2129`; the longer one is first
-      return b.length - a.length;
+      var cmp;
+      cmp = b.length - a.length;
+      if (cmp === 0) {
+        cmp = a - b;
+      }
+      return cmp;
     });
 
     if (leaf) {
@@ -156,7 +160,10 @@ function _buildRegex (tree) {
 
 // build regex from numbers
 function buildRegex (numbers) {
-  return _buildRegex(_buildHash(numbers));
+  var
+    i = _buildHash(numbers);
+  //~ console.log(JSON.stringify(i, null, '  '));
+  return _buildRegex(i);
 }
 
 M.readnumbers = readnumbers;

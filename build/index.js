@@ -7,11 +7,12 @@
 var
   fs = require('fs'),
   assert = require('assert'),
+  hashTree = require('hashtree').hashTree,
   gen = require('./lib/genregex');
 
 var
   config = {
-    out: __dirname + '/out.txt'
+    out: __dirname + '/out.json'
   };
 
 // test the regex with the given numbers
@@ -31,6 +32,7 @@ function test (regex, numbers) {
       res = false;
     }
   });
+  
   return res;
 }
 
@@ -41,25 +43,29 @@ function build (files) {
 
   files.forEach(function(f){
     var
+      a = f.split('_'),
       numbers,
       regex;
-    
+
     numbers = gen.readnumbers([__dirname + '/../assets/' + f + '.txt']);
     regex = gen.buildRegex(numbers);
     regex = regex.replace(/^\(\?:/, '(');
 
+    hashTree.set(result, a, regex);
+
     // test the generated regex
-    if(test(regex, numbers)) {
-      result[f] = regex;
-    }
-    else {
-      console.error(f + ' contains errors');
+    if(! test(regex, numbers)) {
+      console.log(f + ' contains errors');
     }
   });
   return result;
 }
 
-var res = build([ 'international', 'de_mobile', 'de_fixed' ]);
+var res = build([
+  'international',
+  '49_special', '49_mobile','49_fixed',
+  '1_special', '1_mobile', '1_fixed'
+  ]);
 
 fs.writeFileSync(config.out, JSON.stringify(res, null, '\t'), 'utf8');
 

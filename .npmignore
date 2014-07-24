@@ -1,5 +1,9 @@
 .gitignore
 .npmignore
+.jshintrc
 attic/
+tmp/
 assets/
 build/
+*.tgz
+*.sh
