@@ -196,13 +196,13 @@ describe('#vorwahlen formating numbers', function() {
   it('+4833922123456789', function(){
     var
       exp = {"match":["+","48","33922123456789"],"type":"international","cc":"48","formatted":"+48/3392-2123-456-789"},
-      res = vorwahlen('+4833922123456789',  { format: {cc: '/', ndc: ' ', other: '-' } });
+      res = vorwahlen('+4833922123456789',  { format: {cc: '/', ndc: ' ', nn: '-' } });
     assert.deepEqual(res, exp);
   });
   it('+4933922123456789', function(){
     var
       exp = {"match":["+49","33922","123456789"],"type":"fixed","cc":"49","ndc":"33922","nn":"123456789","formatted":"+49/33922/1234-567-89"},
-      res = vorwahlen('+4933922123456789',  { format: {national: false, cc: '/', ndc: '/', other: '-' } });
+      res = vorwahlen('+4933922123456789',  { format: {national: false, cc: '/', ndc: '/', nn: '-' } });
     assert.deepEqual(res, exp);
   });
 });
@@ -233,3 +233,70 @@ describe('#vorwahlen french numbers', function() {
     assert.deepEqual(res, exp);
   });
 });
+
+describe('#vorwahlen swiss numbers', function() {
+  it('+41328421234', function(){
+    var
+      exp = {"match":["+41","32842","1234"],"type":"fixed","cc":"41","ndc":"32842","nn":"1234","formatted":"+41 32842 1234"},
+      res = vorwahlen('+41328421234', { format: {national: false} });
+    assert.deepEqual(res, exp);
+  });
+  it('+41328371234 number not exists', function(){
+    var
+      exp = {"match":null,"type":"international","cc":"41"},
+      res = vorwahlen('+41328371234', { format: {national: false} });
+    assert.deepEqual(res, exp);
+  });
+  it('0740301234', function(){
+    var
+      exp = {"match":["0","74030","1234"],"type":"mobile","cc":"41","ndc":"74030","nn":"1234","formatted":"+41 74030 1234"},
+      res = vorwahlen('0740301234', { countryCode: '41', format: {national: false} });
+    assert.deepEqual(res, exp);
+  });
+  it('0740311234 number not exists', function(){
+    var
+      exp = {"match":null},
+      res = vorwahlen('0740311234', { countryCode: '41', format: {national: false} });
+    assert.deepEqual(res, exp);
+  });
+  it('1811', function(){
+    var
+      exp = {"match":["","1811",""],"type":"special","cc":"41","ndc":"1811","nn":"","formatted":"1811"},
+      res = vorwahlen('1811', { countryCode: '41' });
+    assert.deepEqual(res, exp);
+  });
+});
+
+describe('#vorwahlen austrian numbers', function() {
+  it('+4321601234', function(){
+    var
+      exp = {"match":["+43","2160","1234"],"type":"fixed","cc":"43","ndc":"2160","nn":"1234","formatted":"+43 2160 1234"},
+      res = vorwahlen('+4321601234', { format: {national: false} });
+    assert.deepEqual(res, exp);
+  });
+  it('+4321611234 number not exists', function(){
+    var
+      exp = {"match":null,"type":"international","cc":"43"} ,
+      res = vorwahlen('+4321611234', { format: {national: false} });
+    assert.deepEqual(res, exp);
+  });
+  it('06571234567', function(){
+    var
+      exp = {"match":["0","657","1234567"],"type":"mobile","cc":"43","ndc":"657","nn":"1234567","formatted":"+43 657 1234 567"},
+      res = vorwahlen('06571234567', { countryCode: '43', format: {national: false} });
+    assert.deepEqual(res, exp);
+  });
+  it('06581234567 number not exists', function(){
+    var
+      exp = {"match":null},
+      res = vorwahlen('06581234567', { countryCode: '43', format: {national: false} });
+    assert.deepEqual(res, exp);
+  });
+  it('0939123456', function(){
+    var
+      exp = {"match":["0","939","123456"],"type":"special","cc":"43","ndc":"939","nn":"123456","formatted":"0939 123 456"},
+      res = vorwahlen('0939123456', { countryCode: '43' });
+    assert.deepEqual(res, exp);
+  });
+});
+

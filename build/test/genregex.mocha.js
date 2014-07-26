@@ -49,7 +49,7 @@ describe('generate regex', function(){
 
   it('build regex from de_mobile', function(){
     var
-      numbers = gen.readnumbers([__dirname + '/../../assets/de_49_mobile.txt']),
+      numbers = gen.readnumbers([__dirname + '/../../assets/49_mobile.txt']),
       res = gen.buildRegex(numbers);
 
     test(res, numbers, {157:1});
@@ -57,7 +57,7 @@ describe('generate regex', function(){
   
   it('build regex from de_fixed', function(){
     var
-      numbers = gen.readnumbers([__dirname + '/../../assets/de_49_fixed.txt']),
+      numbers = gen.readnumbers([__dirname + '/../../assets/49_fixed.txt']),
       res = gen.buildRegex(numbers);
 
     test(res, numbers);

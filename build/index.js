@@ -64,6 +64,8 @@ function build (files) {
 var res = build([
   'international',
   '49_special', '49_mobile','49_fixed',
+  '43_special', '43_mobile','43_fixed',
+  '41_special', '41_mobile','41_fixed',
   '1_special', '1_mobile', '1_fixed'
   ]);
 

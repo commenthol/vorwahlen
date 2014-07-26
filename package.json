@@ -1,7 +1,7 @@
 {
   "name": "vorwahlen",
-  "version": "0.0.1",
-  "description": "segment german or international phone numbers to display them in a human readable format",
+  "version": "0.0.2",
+  "description": "Format phone numbers for better readability, usability.",
   "main": "vorwahlen.js",
   "dependencies": {
   },
