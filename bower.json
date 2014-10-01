@@ -1,0 +1,37 @@
+{
+  "name": "vorwahlen",
+  "version": "0.0.4",
+  "description": "Format phone numbers for better readability, usability.",
+  "main": "vorwahlen.js",
+  "authors": [
+    "commenthol"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/commenthol/vorwahlen.git"
+  },
+  "homepage": "https://github.com/commenthol/vorwahlen",
+  "moduleType": [
+    "amd",
+    "node",
+    "globals"
+  ],
+  "keywords": [
+    "vorwahlen",
+    "phone",
+    "numbers",
+    "german",
+    "international"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tmp",
+    "build",
+    "assets",
+    "*.tgz"
+  ]
+}

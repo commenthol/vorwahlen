@@ -118,6 +118,12 @@ describe('#vorwahlen local mobile numbers', function() {
       res = vorwahlen('01761234567890123');
     assert.deepEqual(res, exp);
   });
+  it('01531912345', function(){
+    var
+      exp = {"match":["0","15319","12345"],"type":"mobile","cc":"49","ndc":"15319","nn":"12345","formatted":"015319 123 45"},
+      res = vorwahlen('01531912345');
+    assert.deepEqual(res, exp);
+  });
 });
 
 describe('#vorwahlen mobile numbers', function() {

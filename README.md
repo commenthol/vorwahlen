@@ -86,10 +86,18 @@ output a formatted string, seperated by the known prefix dialing codes
 * +43 [Austria](https://www.rtr.at/en/tk/E129)
 * +49 [Germany](http://www.bundesnetzagentur.de/cln_1431/DE/Sachgebiete/Telekommunikation/Unternehmen_Institutionen/Nummerierung/Rufnummern/Rufnummern_node.html)
 
-## Development
+## Running Tests & Contributing
+
+To run the tests use `npm test`.
 
 If you like to add your national numbering scheme not yet supported, fork this project and add the regular expressions for the different types of services (special, mobile, fixed).
 In `build/index.js` you'll find a tool to generate the regular expressions from a txt-file, which needs to contain the prefix numbers. Please check out the files in `assets` for more details.
+
+## Contribution
+
+If you contribute code to this project, you are implicitly allowing your code
+to be distributed under the MIT license. You are also implicitly verifying that
+all code is your original work.
 
 ## License
 

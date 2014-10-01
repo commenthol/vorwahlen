@@ -1,18 +1,8 @@
 {
   "name": "vorwahlen",
   "version": "0.0.4",
+  "repo": "commenthol/vorwahlen",
   "description": "Format phone numbers for better readability, usability.",
-  "main": "vorwahlen.js",
-  "dependencies": {
-  },
-  "devDependencies": {
-    "hashtree": "^0.4.1",
-    "lodash": "^2.4.1",
-    "mocha": "^1.21.0"
-  },
-  "scripts": {
-    "test": "mocha"
-  },
   "keywords": [
     "vorwahlen",
     "phone",
@@ -20,6 +10,9 @@
     "german",
     "international"
   ],
-  "author": "commenthol",
+  "scripts": [
+    "vorwahlen.js"
+  ],
+  "main": "vorwahlen.js",
   "license": "MIT"
 }

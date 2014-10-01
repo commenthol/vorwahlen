@@ -1,7 +1,6 @@
 .gitignore
 .npmignore
 .jshintrc
-attic/
 tmp/
 assets/
 build/
