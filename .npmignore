@@ -2,7 +2,10 @@
 .npmignore
 .jshintrc
 tmp/
+attic/
 assets/
 build/
 *.tgz
 *.sh
+bower.json
+component.json
