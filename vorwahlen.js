@@ -184,7 +184,7 @@
   };
 
   // Node.js
-  if (typeof ctx.Window === 'undefined' && typeof module !== 'undefined' && module.exports) {
+  if (typeof module !== 'undefined' && module.exports) {
     module.exports = M;
   }
   // AMD / RequireJS
