@@ -1,6 +1,6 @@
 {
   "name": "vorwahlen",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "repo": "commenthol/vorwahlen",
   "description": "Format phone numbers for better readability, usability.",
   "keywords": [

@@ -10,6 +10,7 @@ describe('#vorwahlen international numbers', function() {
   it('+1206123456789', function(){
     var
       exp = {"match":["+1","206","123456789"],"type":"fixed","cc":"1","ndc":"206","nn":"123456789","formatted":"+1 206 1234 567 89"},
+      res;
       res = vorwahlen('+1206123456789');
     assert.deepEqual(res, exp);
   });

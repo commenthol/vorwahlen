@@ -1,11 +1,15 @@
 .gitignore
 .npmignore
 .jshintrc
-tmp/
 attic/
 assets/
 build/
+tmp/
+src/
 *.tgz
 *.sh
 bower.json
 component.json
+gulpfile.js
+vorwahlen-min.js
+npm-debug.log

@@ -16,6 +16,20 @@ Different types indicate the usage for the given number:
 
 The module is usable in Node.js, AMD / RequireJS, and the Browser
 
+## Table of Contents
+
+<!-- !toc (minlevel=2 omit="Table of Contents") -->
+
+* [Usage](#usage)
+* [Interface](#interface)
+* [Excluding numbering schemes](#excluding-numbering-schemes)
+* [References (Numbering Schemes)](#references-numbering-schemes-)
+* [Running Tests & Contributing](#running-tests-contributing)
+* [Contribution](#contribution)
+* [License](#license)
+
+<!-- toc! -->
+
 ## Usage
 
 ```javascript
@@ -77,6 +91,12 @@ output a formatted string, seperated by the known prefix dialing codes
   }
 ```
 
+## Excluding numbering schemes
+
+To exclude numbering schemes from the final file you can exclude the unwanted country codes from the final build.
+
+Uncomment the numbers to exclude from the `context` within `gulpfile.js` and rerun with `gulp` from commandline.
+
 ## References (Numbering Schemes)
 
 * [ITU T0202](http://www.itu.int/oth/T0202.aspx?parent=T0202)
@@ -106,3 +126,5 @@ Copyright (c) 2014 commenthol
 Software is released under [MIT][license].
 
 [license]: ./LICENSE
+
+

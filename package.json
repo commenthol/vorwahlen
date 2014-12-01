@@ -1,17 +1,26 @@
 {
   "name": "vorwahlen",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Format phone numbers for better readability, usability.",
   "main": "vorwahlen.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-jshint": "^1.9.0",
+    "gulp-mocha": "^2.0.0",
+    "gulp-preprocess": "^1.1.1",
+    "gulp-rename": "^1.2.0",
+    "gulp-uglify": "^1.0.1",
     "hashtree": "^0.4.1",
     "lodash": "^2.4.1",
     "mocha": "^1.21.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/commenthol/vorwahlen.git"
   },
   "keywords": [
     "vorwahlen",

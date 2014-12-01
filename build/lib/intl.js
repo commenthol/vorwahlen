@@ -7,7 +7,7 @@ var
 var
   config = {
     in:  __dirname + '/../../attic/itu-international.txt',
-    out: __dirname + '/../../assets/international.txt'
+    out: __dirname + '/../../assets/international_cc.txt'
   },
   numbers = [],
   intl = fs.readFileSync(config.in, 'utf8');
