@@ -95,7 +95,7 @@ output a formatted string, seperated by the known prefix dialing codes
 
 To exclude numbering schemes from the final file you can exclude the unwanted country codes from the final build.
 
-Uncomment the numbers to exclude from the `context` within `gulpfile.js` and rerun with `gulp` from commandline.
+Uncomment the numbers to exclude from the `context` within `gulpfile.js` and rebuild with `gulp build` from commandline.
 
 ## References (Numbering Schemes)
 

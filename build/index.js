@@ -20,18 +20,23 @@ var
       },
       '1': {
         national: "", // national prefix
-        prefix: "(\\+1|(?:))",        
+        prefix: "(\\+1|(?:))",
         assets: [ '1_special', '1_mobile', '1_fixed' ],
       },
       '41': {
         national: "0", // national prefix
-        prefix: "(\\+41|0041|0|(?:))0?",        
+        prefix: "(\\+41|0041|0|(?:))0?",
         assets: [ '41_special', '41_mobile','41_fixed' ],
       },
       '43': {
         national: "0", // national prefix
         prefix: "(\\+43|0043|0|(?:))0?",
         assets: [ '43_special', '43_mobile','43_fixed' ],
+      },
+      '44': {
+        national: "0", // national prefix
+        prefix: "(\\+44|0044|0|(?:))0?",
+        assets: [ '44_special', '44_mobile','44_fixed' ],
       },
       '49': {
         national: "0", // national prefix
@@ -49,16 +54,18 @@ function test (regex, numbers) {
     rex = new RegExp('^' + regex + '(.*)$');
 
   numbers.forEach(function(n){
-    var
-      n1 = n + append,
-      res = n1.match(rex);
+    var n1, res;
+
+    n = n.replace(/x/g, '0');
+    n1 = n + append;
+    res = n1.match(rex);
 
     if (res[1] !== n || res[2] !== append) {
       console.error(n, res);
       res = false;
     }
   });
-  
+
   return res;
 }
 

@@ -17,9 +17,11 @@ function test (regex, numbers, exeptions) {
   exeptions = exeptions || {};
 
   numbers.forEach(function(n){
-    var
-      n1 = n + append,
-      res = n1.match(rex);
+    var n1, res;
+
+    n = n.replace(/x/g, '0');
+    n1 = n + append;
+    res = n1.match(rex);
 
     //~ if (res[1] !== n || res[2] !== append) {
       //~ console.error(n, res);
@@ -47,6 +49,16 @@ describe('generate regex', function(){
     test(res, numbers);
   });
 
+  it('build regexp with x', function(){
+    var
+      numbers = gen.readnumbers([__dirname + '/test1.txt']),
+      res = gen.buildRegex(numbers),
+      exp = "(?:2(?:2\\d|3(?:\\d\\d)|4[1]))";
+
+    assert.equal(res, exp);
+    test(res, numbers);
+  });
+
   it('build regex from de_mobile', function(){
     var
       numbers = gen.readnumbers([__dirname + '/../../assets/49_mobile.txt']),
@@ -54,7 +66,7 @@ describe('generate regex', function(){
 
     test(res, numbers, {157:1});
   });
-  
+
   it('build regex from de_fixed', function(){
     var
       numbers = gen.readnumbers([__dirname + '/../../assets/49_fixed.txt']),

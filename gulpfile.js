@@ -4,18 +4,19 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
     preprocess = require('gulp-preprocess');
- 
+
 var context = {
   context: {
     "1": true, // uncomment lines to exclude phone data
     "33": true,
     "41": true,
     "43": true,
+    "44": true,
     "49": true,
   }
 };
 
-gulp.task('src', function() {
+gulp.task('build', function() {
   require('./build/index')();
   gulp.src('./src/vorwahlen.js')
     .pipe(preprocess(context))
@@ -38,4 +39,4 @@ gulp.task('mocha', function () {
     .pipe(mocha({reporter: 'nyan'}));
 });
 
-gulp.task('default', ['jshint', 'src', 'mocha']);
+gulp.task('default', ['jshint', 'build', 'mocha']);

@@ -1,6 +1,6 @@
 'use strict';
 
-/* gloabal describe, it */ 
+/* gloabal describe, it */
 
 var
   assert = require('assert'),
@@ -307,3 +307,35 @@ describe('#vorwahlen austrian numbers', function() {
   });
 });
 
+describe('#vorwahlen uk numbers', function() {
+  it('+44118123456', function(){
+    var
+      exp = {"match":["+44","118","123456"],"type":"fixed","cc":"44","ndc":"118","nn":"123456","formatted":"+44 118 123 456"},
+      res = vorwahlen('+44118123456', { format: {national: false} });
+    assert.deepEqual(res, exp);
+  });
+  it('+44122911234 number not exists', function(){
+    var
+      exp = {"match":null,"type":"international","cc":"44"} ,
+      res = vorwahlen('+44122911234', { format: {national: false} });
+    assert.deepEqual(res, exp);
+  });
+  it('07571234567', function(){
+    var
+      exp = {"match":["0","7571","234567"],"type":"mobile","cc":"44","ndc":"7571","nn":"234567","formatted":"+44 7571 234 567"},
+      res = vorwahlen('07571234567', { countryCode: '44', format: {national: false} });
+    assert.deepEqual(res, exp);
+  });
+  it('076231234567 number is special number', function(){
+    var
+      exp = {"match":["0","7623","1234567"],"type":"special","cc":"44","ndc":"7623","nn":"1234567","formatted":"+44 7623 1234 567"},
+      res = vorwahlen('076231234567', { countryCode: '44', format: {national: false} });
+    assert.deepEqual(res, exp);
+  });
+  it('0939123456 number does not exist', function(){
+    var
+      exp = {"match":null},
+      res = vorwahlen('0939123456', { countryCode: '44' });
+    assert.deepEqual(res, exp);
+  });
+});

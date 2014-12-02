@@ -17,20 +17,30 @@
     }
   }
 
+
   // @include data_international.js
-  // @ifdef 1 
+
+  // @ifdef 1
   // @include data_1.js
   // @endif
+
   // @ifdef 33
   // @include data_33.js
   // @endif
-  // @ifdef 41 
+
+  // @ifdef 41
   // @include data_41.js
   // @endif
-  // @ifdef 43 
+
+  // @ifdef 43
   // @include data_43.js
   // @endif
-  // @ifdef 49 
+
+  // @ifdef 44
+  // @include data_44.js
+  // @endif
+
+  // @ifdef 49
   // @include data_49.js
   // @endif
 
@@ -109,7 +119,7 @@
   /**
    * Parse a phonenumber, check international prefix, national routing to
    * output a formatted string, seperated by the known prefix dialing codes
-   * 
+   *
    * @param {String} number : phonenumber to parse
    * @param {Object} options :
    * ```
@@ -142,13 +152,13 @@
     options = options || {};
     options.countryCode = options.countryCode || config.countryCode;
     countryCode = options.countryCode;
-      
+
     number = sanitize(number+'') || '';
 
     res.match = match(number, regex.international);
 
     if (res.match && res.match[1]) {
-      res.type = 'international'; 
+      res.type = 'international';
       countryCode = res.match[1];
       res.cc = countryCode;
     }

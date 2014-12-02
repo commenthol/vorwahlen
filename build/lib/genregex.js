@@ -18,9 +18,9 @@ function add (data, arr) {
     tmp = (data || '').split(/[\r\n]+/g);
 
   tmp.forEach(function(i){
-    if (/^\d+$/.test(i)) { // only take numbers
+    if (/^[\dx]+$/.test(i)) { // only take numbers
       arr.push(i);
-    } 
+    }
   });
 }
 
@@ -36,7 +36,7 @@ function readnumbers (files) {
       add(tmp, nummern);
     }
   });
-  
+
   return nummern;
 }
 
@@ -53,7 +53,7 @@ function _buildHash (numbers) {
       key = (n||'').split('');
     tree.set(key, '#');
     check = tree.get(key);
-    
+
     if (!check) {
       while (key.length>1) {
         keyN.unshift(key.pop());
@@ -69,7 +69,7 @@ function _buildHash (numbers) {
 
   tree.sort();
   return tree.tree();
-} 
+}
 
 // build regex from hashtree
 function _buildRegex (tree) {
@@ -130,7 +130,7 @@ function _buildRegex (tree) {
       else {
         // build a regex of type `[0246]`
         res = '[' + arr.join('') + ']';
-      } 
+      }
     }
     else {
       // build a regex of type `(?:0|2|4)`
@@ -151,7 +151,7 @@ function _buildRegex (tree) {
       });
       res += ')';
     }
-    
+    res = res.replace(/(\[0-9\]|\[x\]|x)/g, '\\d');
     return res;
   }
 
