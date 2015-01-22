@@ -1,2 +1,5 @@
-node_modules/
-attic/
+/node_modules
+/attic
+/tmp
+*.log
+*.tgz
