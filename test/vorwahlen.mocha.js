@@ -293,10 +293,10 @@ describe('#vorwahlen austrian numbers', function() {
       res = vorwahlen('06571234567', { countryCode: '43', format: {national: false} });
     assert.deepEqual(res, exp);
   });
-  it('06581234567 number not exists', function(){
+  it('06911234567 number not exists', function(){
     var
       exp = {"match":null},
-      res = vorwahlen('06581234567', { countryCode: '43', format: {national: false} });
+      res = vorwahlen('06911234567', { countryCode: '43', format: {national: false} });
     assert.deepEqual(res, exp);
   });
   it('0939123456', function(){
