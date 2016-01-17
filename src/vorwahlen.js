@@ -51,7 +51,7 @@
 
   for (country in data) {
     if (/^\d+$/.test(country)) {
-      ['special', 'mobile', 'fixed'].forEach(function(type){
+      ['special', 'mobile', 'fixed'].forEach(function(type){  // jshint ignore:line
         if (data[country] && data[country][type]) {
           if (!regex[country]) { regex[country] = {}; }
           if (!regex[country][type]) { regex[country][type] = {}; }
