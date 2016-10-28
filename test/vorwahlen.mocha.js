@@ -287,10 +287,10 @@ describe('#vorwahlen austrian numbers', function() {
       res = vorwahlen('+4321611234', { format: {national: false} });
     assert.deepEqual(res, exp);
   });
-  it('06571234567', function(){
+  it('06551234567', function(){
     var
-      exp = {"match":["0","657","1234567"],"type":"mobile","cc":"43","ndc":"657","nn":"1234567","formatted":"+43 657 1234 567"},
-      res = vorwahlen('06571234567', { countryCode: '43', format: {national: false} });
+      exp = {"match":["0","655","1234567"],"type":"mobile","cc":"43","ndc":"655","nn":"1234567","formatted":"+43 655 1234 567"},
+      res = vorwahlen('06551234567', { countryCode: '43', format: {national: false} });
     assert.deepEqual(res, exp);
   });
   it('06911234567 number not exists', function(){

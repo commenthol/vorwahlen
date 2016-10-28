@@ -17,7 +17,8 @@
     "mocha": "^2.5.3"
   },
   "scripts": {
-    "test": "mocha test/*.js"
+    "test": "mocha test/*.js",
+    "build": "gulp"
   },
   "repository": {
     "type": "git",
