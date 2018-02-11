@@ -1,6 +1,6 @@
 {
   "name": "vorwahlen",
-  "version": "0.2.19",
+  "version": "0.2.20",
   "description": "Format phone numbers for better readability, usability.",
   "main": "vorwahlen.js",
   "dependencies": {},
