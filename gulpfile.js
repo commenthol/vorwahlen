@@ -1,6 +1,4 @@
 var gulp = require('gulp'),
-    mocha = require('gulp-mocha'),
-    jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
     preprocess = require('gulp-preprocess');
@@ -16,9 +14,9 @@ var context = {
   }
 };
 
-gulp.task('build', function() {
+function build () {
   require('./build/index')();
-  gulp.src('./src/vorwahlen.js')
+  return gulp.src('./src/vorwahlen.js')
     .pipe(preprocess(context))
     .pipe(gulp.dest('./'))
     .pipe(rename(function(path){
@@ -26,17 +24,6 @@ gulp.task('build', function() {
     }))
     .pipe(uglify())
     .pipe(gulp.dest('./'))
-});
+}
 
-gulp.task('jshint', function() {
-  gulp.src('./src/*.js')
-    .pipe(jshint())
-    .pipe(jshint.reporter('default'));
-});
-
-gulp.task('mocha', function () {
-  gulp.src('test/*', {read: false})
-    .pipe(mocha({reporter: 'nyan'}));
-});
-
-gulp.task('default', ['jshint', 'build', 'mocha']);
+exports.default = gulp.series(build)
