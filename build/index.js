@@ -11,34 +11,34 @@ var gen = require('./lib/genregex')
 var config = {
   out: `${__dirname}/../src/`,
   build: {
-    'international': {
+    international: {
       prefix: '(\\+|00)', // international prefix
-      assets: [ 'international_cc' ]
+      assets: ['international_cc']
     },
-    '1': {
+    1: {
       national: '', // national prefix
       prefix: '(\\+1|(?:))',
-      assets: [ '1_special', '1_mobile', '1_fixed' ]
+      assets: ['1_special', '1_mobile', '1_fixed']
     },
-    '41': {
+    41: {
       national: '0', // national prefix
       prefix: '(\\+41|0041|0|(?:))0?',
-      assets: [ '41_special', '41_mobile', '41_fixed' ]
+      assets: ['41_special', '41_mobile', '41_fixed']
     },
-    '43': {
+    43: {
       national: '0', // national prefix
       prefix: '(\\+43|0043|0|(?:))0?',
-      assets: [ '43_special', '43_mobile', '43_fixed' ]
+      assets: ['43_special', '43_mobile', '43_fixed']
     },
-    '44': {
+    44: {
       national: '0', // national prefix
       prefix: '(\\+44|0044|0|(?:))0?',
-      assets: [ '44_special', '44_mobile', '44_fixed' ]
+      assets: ['44_special', '44_mobile', '44_fixed']
     },
-    '49': {
+    49: {
       national: '0', // national prefix
       prefix: '(\\+49|0049|0|(?:))0?',
-      assets: [ '49_special', '49_mobile', '49_fixed' ]
+      assets: ['49_special', '49_mobile', '49_fixed']
     }
   }
 }
@@ -77,13 +77,13 @@ function build (obj) {
     var numbers
     var regex;
 
-    [ 'national', 'prefix' ].forEach(function (p) {
+    ['national', 'prefix'].forEach(function (p) {
       if (obj[p] !== undefined) {
         hashTree.set(result, [a[0], p], obj[p])
       }
     })
 
-    numbers = gen.readnumbers([ `${__dirname}/../assets/${f}.txt` ])
+    numbers = gen.readnumbers([`${__dirname}/../assets/${f}.txt`])
     regex = gen.buildRegex(numbers)
     regex = regex.replace(/^\(\?:/, '(')
 

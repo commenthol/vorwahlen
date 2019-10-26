@@ -6,7 +6,7 @@
   var country
   var moduleName = 'vorwahlen' // the name of the module
   var config = {
-    'countryCode': '49' // the default country code
+    countryCode: '49' // the default country code
   }
   var regex = {} // regular expressions to segment phone numbers
   var data = {}
