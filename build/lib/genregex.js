@@ -4,17 +4,16 @@
  * generate regular expression from lists of prefix dialing numbers
  */
 
-var
-  HashTree = require('hashtree').HashTree
-var fs = require('fs')
+const HashTree = require('hashtree').HashTree
+const fs = require('fs')
 
-var
+const
   M = {}
 
 // add number to array
 function add (data, arr) {
   arr = arr || []
-  var tmp = (data || '').split(/[\r\n]+/g)
+  const tmp = (data || '').split(/[\r\n]+/g)
 
   tmp.forEach(function (i) {
     if (/^[\dx]+$/.test(i)) { // only take numbers
@@ -25,9 +24,9 @@ function add (data, arr) {
 
 // read the numbers from file
 function readnumbers (files) {
-  var
+  let
     tmp
-  var nummern = []
+  const nummern = []
 
   files.forEach(function (file) {
     tmp = fs.readFileSync(file, 'utf8')
@@ -41,15 +40,14 @@ function readnumbers (files) {
 
 // build hashmap
 function _buildHash (numbers) {
-  var
+  const
     tree = new HashTree()
 
   numbers.forEach(function (n) {
-    var check
-    var keyN = []
-    var key = (n || '').split('')
+    const keyN = []
+    const key = (n || '').split('')
     tree.set(key, '#')
-    check = tree.get(key)
+    const check = tree.get(key)
 
     if (!check) {
       while (key.length > 1) {
@@ -72,13 +70,13 @@ function _buildHash (numbers) {
 function _buildRegex (tree) {
   // recursive processing of the hashtree
   function regX (tree) {
-    var
+    let
       a
-    var over
-    var arr = []
-    var res = ''
-    var leaf = true
-    var init = true
+    let over
+    let arr = []
+    let res = ''
+    let leaf = true
+    let init = true
 
     for (a in tree) {
       arr.push(a)
@@ -88,7 +86,7 @@ function _buildRegex (tree) {
     }
     arr = arr.sort(function (a, b) {
       // sort by length in descending for numbers like `212` `2129`; the longer one is first
-      var cmp
+      let cmp
       cmp = b.length - a.length
       if (cmp === 0) {
         cmp = a - b
@@ -149,7 +147,7 @@ function _buildRegex (tree) {
 
 // build regex from numbers
 function buildRegex (numbers) {
-  var
+  const
     i = _buildHash(numbers)
   // ~ console.log(JSON.stringify(i, null, '  '));
   return _buildRegex(i)

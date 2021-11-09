@@ -1,19 +1,18 @@
 (function (ctx) {
   'use strict'
 
-  var
-    M = {} // define the module
-  var country
-  var moduleName = 'vorwahlen' // the name of the module
-  var config = {
+  let M = {} // define the module
+  let country
+  const moduleName = 'vorwahlen' // the name of the module
+  const config = {
     countryCode: '49' // the default country code
   }
-  var regex = {} // regular expressions to segment phone numbers
-  var data = {}
+  let regex = {} // regular expressions to segment phone numbers
+  const data = {}
 
   // eslint-disable-next-line no-unused-vars
   function extend (origin, add) {
-    for (var i in add) {
+    for (const i in add) {
       origin[i] = add[i]
     }
   }
@@ -63,11 +62,11 @@
 
   // format the result object `res` according to `options`
   function format (res, options) {
-    var
+    let
       tmp
-    var last
-    var size = 4
-    var seg = []
+    let last
+    let size = 4
+    const seg = []
 
     options.format = options.format || {}
     options.format.national = (options.format.national === undefined ? true : options.format.national)
@@ -104,7 +103,7 @@
 
   // match a given `number` using the regular expression `regex`
   function match (number, regex) {
-    var res = number.match(regex)
+    const res = number.match(regex)
     if (res) {
       res.shift()
       delete (res.index)
@@ -141,10 +140,9 @@
    * ```
    */
   M = function (number, options) {
-    var
-      i
-    var countryCode
-    var res = {}
+    let i
+    let countryCode
+    const res = {}
 
     options = options || {}
     options.countryCode = options.countryCode || config.countryCode

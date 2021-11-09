@@ -1,14 +1,15 @@
+/* eslint-disable node/no-path-concat */
 'use strict'
 
 /**
  * file to build all regular expressions for prefix dialing
  */
 
-var fs = require('fs')
-var hashTree = require('hashtree').hashTree
-var gen = require('./lib/genregex')
+const fs = require('fs')
+const hashTree = require('hashtree').hashTree
+const gen = require('./lib/genregex')
 
-var config = {
+const config = {
   out: `${__dirname}/../src/`,
   build: {
     international: {
@@ -45,17 +46,14 @@ var config = {
 
 // test the regex with the given numbers
 function test (regex, numbers) {
-  var
-    append = '8888'
-  var res = true
-  var rex = new RegExp('^' + regex + '(.*)$')
+  const append = '8888'
+  const res = true
+  const rex = new RegExp('^' + regex + '(.*)$')
 
   numbers.forEach(function (n) {
-    var n1, res
-
     n = n.replace(/x/g, '0')
-    n1 = n + append
-    res = n1.match(rex)
+    const n1 = n + append
+    let res = n1.match(rex)
 
     if (res[1] !== n || res[2] !== append) {
       console.error(n, res)
@@ -68,23 +66,20 @@ function test (regex, numbers) {
 
 // build the regexes
 function build (obj) {
-  var
+  const
     result = {}
 
   obj.assets.forEach(function (f) {
-    var
-      a = f.split('_')
-    var numbers
-    var regex;
+    const a = f.split('_')
 
-    ['national', 'prefix'].forEach(function (p) {
+    ;['national', 'prefix'].forEach(function (p) {
       if (obj[p] !== undefined) {
         hashTree.set(result, [a[0], p], obj[p])
       }
     })
 
-    numbers = gen.readnumbers([`${__dirname}/../assets/${f}.txt`])
-    regex = gen.buildRegex(numbers)
+    const numbers = gen.readnumbers([`${__dirname}/../assets/${f}.txt`])
+    let regex = gen.buildRegex(numbers)
     regex = regex.replace(/^\(\?:/, '(')
 
     hashTree.set(result, a, regex)
@@ -98,7 +93,7 @@ function build (obj) {
 }
 
 function run () {
-  var i,
+  let i,
     file,
     res
 
