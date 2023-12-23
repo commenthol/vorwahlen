@@ -1,3 +1,7 @@
+> [!IMPORTANT]  
+> This project isn't maintained any longer. Maybe you like to take a look at
+> [libphonenumber-js](https://www.npmjs.com/package/libphonenumber-js).
+
 # Vorwahlen
 
 Format phone numbers for better readability, usability.
